@@ -1,0 +1,21 @@
+version: 2
+sources:
+  - name: phish
+    database: phish_dev  
+    schema: dev_t0_raw  
+    quoting: 
+      identifier: true 
+
+    tables:
+      - name: RAW_PHISH_ARTISTS
+      - name: RAW_PHISH_SONGS
+      - name: RAW_PHISH_SONG_METADATA
+      - name: RAW_PHISH_SETLISTS
+      - name: RAW_PHISH_VENUES
+      - name: RAW_PHISH_REVIEWS
+      - name: RAW_PHISH_JAMCHARTS
+      - name: RAW_PHISH_SHOWS
+      - name: RAW_SPOTIFY_ALBUMS
+      - name: RAW_SPOTIFY_TRACKS
+      - name: RAW_SPOTIFY_AUDIO_ANALYSIS
+      - name: RAW_SPOTIFY_TRACK_FEATURES
