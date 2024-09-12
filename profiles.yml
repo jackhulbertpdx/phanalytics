@@ -1,0 +1,14 @@
+phanalytics:  # This is the profile name you'll use in your dbt project
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: gh34559.us-east-2.aws  # Example: xyz12345
+      user: JHULBERT       # Your Snowflake username
+      password: '@Belknap123'   # Your Snowflake password
+      role: ACCOUNTADMIN           # (Optional) Snowflake role
+      warehouse: AIRBYTE_WH # The warehouse to use
+      database: PHISH_DEV  # The database to use
+      schema: DBT_JHULBERT       # The schema to use
+      threads: 1                  # Number of concurrent threads (adjust as needed)
+      client_session_keep_alive: False  # Keep the session alive if needed

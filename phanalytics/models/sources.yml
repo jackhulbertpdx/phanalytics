@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: phish
+    database: PHISH_DEV
+    schema: DEV_T0_RAW  
+
+    tables:
+      - name: RAW_PHISH_ARTISTS
+      - name: RAW_PHISH_SONGS
+      - name: RAW_PHISH_SONG_METADATA
+      - name: RAW_PHISH_SETLISTS
+      - name: RAW_PHISH_VENUES
+      - name: RAW_PHISH_REVIEWS
+      - name: RAW_PHISH_JAMCHARTS
+      - name: RAW_PHISH_SHOWS
+      - name: RAW_SPOTIFY_ALBUMS
+      - name: RAW_SPOTIFY_TRACKS
+      - name: RAW_SPOTIFY_AUDIO_ANALYSIS
+      - name: RAW_SPOTIFY_TRACK_FEATURES
+
+  - name: seeds
+    database: phish_dev  
+    schema: seeds  
+    quoting: 
+      identifier: true 
+    tables:
+      - name: CITIES
