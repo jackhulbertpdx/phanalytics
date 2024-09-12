@@ -10,5 +10,5 @@ phanalytics:  # This is the profile name you'll use in your dbt project
       warehouse: AIRBYTE_WH # The warehouse to use
       database: PHISH_DEV  # The database to use
       schema: DBT_JHULBERT       # The schema to use
-      threads: 1                  # Number of concurrent threads (adjust as needed)
+      threads: 4                  # Number of concurrent threads (adjust as needed)
       client_session_keep_alive: False  # Keep the session alive if needed

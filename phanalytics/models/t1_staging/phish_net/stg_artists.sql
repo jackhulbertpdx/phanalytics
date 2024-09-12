@@ -2,17 +2,51 @@ with
 
 source as (
 
-    select * from {{ source('phish', 'RAW_PHISH_ARTISTS') }}
+    select * from {{ source('phish', 'RAW_PHISH_JAMCHARTS') }}
 
 ),
 
 renamed as (
 
     select
-        id,
+        gap,
+        "SET",
+        city,
+        meta,
         slug,
-        artist,
-        _airbyte_extracted_at
+        song,
+        isjam,
+        state,
+        venue,
+        showid,
+        songid,
+        tourid,
+        country,
+        exclude,
+        reviews,
+        venueid,
+        artistid,
+        footnote,
+        nickname,
+        position,
+        showdate,
+        showyear,
+        tourname,
+        tourwhen,
+        uniqueid,
+        isreprise,
+        permalink,
+        tracktime,
+        isjamchart,
+        soundcheck,
+        trans_mark,
+        transition,
+        artist_name,
+        artist_slug,
+        is_original,
+        setlistnotes,
+        jamchart_description,        _airbyte_extracted_at
+
 
     from source
 

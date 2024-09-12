@@ -1,5 +1,5 @@
 with source as (
-      select * from {{ source('phish', 'RAW_PHISH_ARTISTS') }}
+      select * from {{ source('PHISH', 'RAW_PHISH_ARTISTS') }}
 ),
 renamed as (
     select
