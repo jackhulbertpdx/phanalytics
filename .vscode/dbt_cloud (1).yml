@@ -1,0 +1,14 @@
+version: "1"
+context:
+  active-host: "kt509.us1.dbt.com"
+  active-project: "70403103925054"
+projects:
+  - project-name: "Analytics"
+    project-id: "70403103925054"
+    account-name: "Independent"
+    account-id: "70403103922629"
+    account-host: "kt509.us1.dbt.com"
+    token-name: "cloud-cli-7933"
+    token-value: "dbtu_Pcd3Hps1PHkQzS7jHInQGWCR-bKfASLgg_v03c-q3BGKohF-bY"
+
+
