@@ -186,3 +186,16 @@ rust/cubesql/profile.json
 .cubestore
 .env
 .vimspector.json
+
+##Evidence
+.evidence/template
+.svelte-kit
+build
+node_modules
+.DS_Store
+static/data
+*.options.yaml
+.vscode/settings.json
+.env
+.evidence/meta
+.evidence/sources/phish_dev/connection.yaml
