@@ -160,3 +160,29 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+node_modules
+.yarn
+.yarnrc
+/.idea
+/.vscode
+newrelic_agent.log
+.ruby-version
+/.DS_Store
+.DS_Store
+package-lock.json
+pnpm-lock.yaml
+examples/examples-gallery/build
+yarn-error.log
+.gh-token
+.serverless/
+.rpt2_cache/
+**/.nyc_output
+**/coverage
+lerna-debug.log
+tsconfig.tsbuildinfo
+.tool-versions
+testings/
+rust/cubesql/profile.json
+.cubestore
+.env
+.vimspector.json
