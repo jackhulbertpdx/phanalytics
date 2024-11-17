@@ -1,0 +1,64 @@
+MODEL (
+    name DEV_T1_STAGING.stg__jamcharts,
+    kind FULL,
+    cron '@daily',
+    grain  _airbyte_raw_id,
+
+  );
+
+
+
+with 
+
+source as (
+
+    select * from DEV_T0_RAW.PHISH_JAMCHARTS
+
+),
+
+renamed as (
+
+    select
+        _airbyte_raw_id,
+        gap,
+        "SET" as set_number,  -- renamed to avoid keyword
+        city,
+        meta,
+        slug,
+        song,
+        isjam,
+        state,
+        venue,
+        showid,
+        songid,
+        tourid,
+        country,
+        reviews,
+        venueid,
+        artistid,
+        footnote,
+        nickname,
+        position,
+        showdate,
+        showyear,
+        tourname,
+        tourwhen,
+        uniqueid,
+        isreprise,
+        permalink,
+        tracktime,
+        isjamchart,
+        soundcheck,
+        trans_mark,
+        transition,
+        artist_name,
+        artist_slug,
+        is_original,
+        setlistnotes,
+        jamchart_description,        
+        _airbyte_extracted_at
+    from source
+
+)
+
+select * from renamed
