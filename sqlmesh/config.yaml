@@ -1,10 +1,21 @@
-gateways:
-  local:
-    connection:
-      type: duckdb
-      database: db.db
 
-default_gateway: local
+gateways:
+  snowflake:
+    connection:
+      type: snowflake
+      account: fjhuipr-uf36774
+      user: JHULBERT
+      password: '@Belknap123'
+      database: PHANALYTICS_DEV
+      warehouse: AIRBYTE_WH
+      role: ACCOUNTADMIN
+
+
+    state_connection:
+      type: duckdb
+      database: snowflake_state.db
+
+default_gateway: snowflake
 
 model_defaults:
   dialect: snowflake
