@@ -20,7 +20,7 @@ renamed as (
         _airbyte_extracted_at,
         _airbyte_meta,
         city,
-        state as state_name,  -- renamed to avoid keyword
+        state,
         venue,
         showid,
         tourid,

@@ -21,7 +21,7 @@ renamed as (
     select
         _airbyte_raw_id,
         gap,
-        "SET" as set_number,  -- renamed to avoid keyword
+        set,  -- renamed to avoid keyword
         city,
         meta,
         slug,

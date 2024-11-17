@@ -13,13 +13,13 @@ renamed as (
     select
         _airbyte_raw_id,
         gap,
-        set as set_number,  -- Changed from "SET"
+        set,  
         city,
         meta,
         slug,
         song,
         isjam,
-        state as state_name,  -- Changed from "state"
+        state,  
         venue,
         showid,
         songid,

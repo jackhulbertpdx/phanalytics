@@ -21,7 +21,7 @@ renamed as (
         _airbyte_meta,
         city,
         alias,
-        state as state_name,  -- renamed to avoid keyword
+        state,
         country,
         venueid,
         venuename,
