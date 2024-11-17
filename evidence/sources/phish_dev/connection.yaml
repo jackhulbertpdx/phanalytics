@@ -1,0 +1,11 @@
+# This file was automatically generated
+name: phish_dev
+type: snowflake
+options:
+  account: gh34559.us-east-2.aws
+  database: PHANALYTICS_DEV
+  warehouse: AIRBYTE_WH
+  role: ACCOUNTADMIN
+  schema: DEV_T3_PRESENTATION
+  authenticator: userpass
+  resultPrefetch: 2

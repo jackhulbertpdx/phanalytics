@@ -1,0 +1,7 @@
+# This file was automatically generated
+name: cube
+type: postgres
+options:
+  host: localhost
+  port: 15432
+  database: test
