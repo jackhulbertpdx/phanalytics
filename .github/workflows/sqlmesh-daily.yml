@@ -22,6 +22,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install sqlmesh
         pip install snowflake-connector-python
+
+    - name: Debug directory
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "Directory contents:"
+        ls -la
+        echo "Config file contents exist:"
+        test -f sqlmesh/config.yaml && echo "Yes" || echo "No"
       
     - name: Run SQLMesh
       run: |
