@@ -1,33 +1,46 @@
-name: Daily ELT Job
-run-name: 🧃 Daily ELT Job 🧃
+name: SQLMesh Daily Run
 
 on:
   schedule:
-    - cron: '0 14 * * 1-5'  # 7am PST (14:00 UTC) Monday to Friday
+    - cron: '0 0 * * *'  # This runs the workflow daily at midnight UTC
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
-  daily_elt:
-    name: Daily ELT Process
+  sqlmesh:
+    name: SQLMesh Daily Run
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'  # Only run on the main branch
+    permissions:
+      contents: write
+      issues: write
+      checks: write
+      pull-requests: write
+    env:
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__TYPE: "snowflake"
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__ACCOUNT: "fjhuipr-uf36774"
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__USER: "JHULBERT"
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__PASSWORD: "@Belknap123"
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__DATABASE: "PHANALYTICS_DEV"
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__WAREHOUSE: "AIRBYTE_WH"
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__ROLE: "ACCOUNTADMIN"
+      SQLMESH__DEFAULT_GATEWAY: "snowflake"
+      SQLMESH__MODEL_DEFAULTS__DIALECT: "snowflake"
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.9'
 
-      - name: Install SQLMesh + Dependencies
+      - name: Install dependencies
         run: |
-          pip install sqlmesh
-          pip install snowflake-connector-python
-          pip install duckdb
-        shell: bash
+          python -m pip install --upgrade pip
+          pip install sqlmesh[snowflake]
+          pip install duckdb  # For state management
 
       - name: Run SQLMesh
         run: |
-          sqlmesh plan --config sqlmesh/config.yaml --force
-          sqlmesh run --config sqlmesh/config.yaml --force
+          sqlmesh plan --force
+          sqlmesh run --force
