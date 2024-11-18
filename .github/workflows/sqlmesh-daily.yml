@@ -2,9 +2,8 @@ name: SQLMesh Daily Run
 
 on:
   schedule:
-    # Runs at 2 AM UTC every day
     - cron: '0 2 * * *'
-  workflow_dispatch:  # Allows manual trigger
+  workflow_dispatch:
 
 jobs:
   sqlmesh_run:
@@ -18,17 +17,13 @@ jobs:
       with:
         python-version: '3.9'
 
-    - name: Install dependencies
+    - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
         pip install sqlmesh
         pip install snowflake-connector-python
-
-    - name: Create secure config
-      run: |
-        echo "${{ secrets.SQLMESH_CONFIG }}" > /sqlmesh/config.yaml
       
     - name: Run SQLMesh
       run: |
-        sqlmesh plan --force
-        sqlmesh run --force
+        sqlmesh plan --config sqlmesh/config.yaml --force
+        sqlmesh run --config sqlmesh/config.yaml --force
