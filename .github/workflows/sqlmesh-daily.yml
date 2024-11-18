@@ -23,16 +23,20 @@ jobs:
         pip install sqlmesh
         pip install snowflake-connector-python
 
-    - name: Debug directory
+    - name: Debug environment
       run: |
-        echo "Current directory:"
-        pwd
-        echo "Directory contents:"
-        ls -la
-        echo "Config file contents exist:"
-        test -f sqlmesh/config.yaml && echo "Yes" || echo "No"
+        echo "Working directory: $(pwd)"
+        echo "Config file location: $(pwd)/sqlmesh/config.yaml"
+        echo "Config file exists: "
+        ls -l sqlmesh/config.yaml
+        echo "Config file contents: "
+        cat sqlmesh/config.yaml
       
     - name: Run SQLMesh
+      env:
+        SQLMESH_CONFIG: ${{ github.workspace }}/sqlmesh/config.yaml
       run: |
-        sqlmesh plan --config sqlmesh/config.yaml --force
-        sqlmesh run --config sqlmesh/config.yaml --force
+        CONFIG_PATH="${GITHUB_WORKSPACE}/sqlmesh/config.yaml"
+        echo "Using config path: $CONFIG_PATH"
+        sqlmesh plan --config "$CONFIG_PATH" --force
+        sqlmesh run --config "$CONFIG_PATH" --force
