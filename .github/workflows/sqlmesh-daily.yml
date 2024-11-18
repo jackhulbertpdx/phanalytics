@@ -26,7 +26,7 @@ jobs:
 
     - name: Create secure config
       run: |
-        echo "${{ secrets.SQLMESH_CONFIG }}" > config.yaml
+        echo "${{ secrets.SQLMESH_CONFIG }}" > /sqlmesh/config.yaml
       
     - name: Run SQLMesh
       run: |
