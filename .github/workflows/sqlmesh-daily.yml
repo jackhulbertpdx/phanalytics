@@ -22,21 +22,35 @@ jobs:
         python -m pip install --upgrade pip
         pip install sqlmesh
         pip install snowflake-connector-python
+        pip install duckdb
 
-    - name: Debug environment
-      run: |
-        echo "Working directory: $(pwd)"
-        echo "Config file location: $(pwd)/sqlmesh/config.yaml"
-        echo "Config file exists: "
-        ls -l sqlmesh/config.yaml
-        echo "Config file contents: "
-        cat sqlmesh/config.yaml
-      
-    - name: Run SQLMesh
+    - name: Setup SQLMesh config
       env:
-        SQLMESH_CONFIG: ${{ github.workspace }}/sqlmesh/config.yaml
+        SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+        SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+        SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
       run: |
-        CONFIG_PATH="${GITHUB_WORKSPACE}/sqlmesh/config.yaml"
-        echo "Using config path: $CONFIG_PATH"
-        sqlmesh plan --config "$CONFIG_PATH" --force
-        sqlmesh run --config "$CONFIG_PATH" --force
+        cat << EOF > config.yaml
+        gateways:
+          snowflake:
+            connection:
+              type: snowflake
+              account: ${SNOWFLAKE_ACCOUNT}
+              user: ${SNOWFLAKE_USER}
+              password: ${SNOWFLAKE_PASSWORD}
+              database: PHANALYTICS_DEV
+              warehouse: AIRBYTE_WH
+              role: ACCOUNTADMIN
+            state_connection:
+              type: duckdb
+              database: snowflake_state.db
+        default_gateway: snowflake
+        model_defaults:
+          dialect: snowflake
+          start: 2024-11-16
+        EOF
+        
+    - name: Run SQLMesh
+      run: |
+        sqlmesh plan --force
+        sqlmesh run --force
