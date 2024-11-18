@@ -1,52 +1,33 @@
-name: SQLMesh Daily Run
+name: Daily ELT Job
+run-name: 🧃 Daily ELT Job 🧃
 
 on:
   schedule:
-    - cron: '0 2 * * *'
-  workflow_dispatch:
+    - cron: '0 14 * * 1-5'  # 7am PST (14:00 UTC) Monday to Friday
+  workflow_dispatch:  # Allow manual triggering
 
 jobs:
-  sqlmesh_run:
+  daily_elt:
+    name: Daily ELT Process
     runs-on: ubuntu-latest
-    
+    if: github.ref == 'refs/heads/main'  # Only run on the main branch
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-    - name: Install Python dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install sqlmesh
-        pip install snowflake-connector-python
-        pip install duckdb  # Added because your config uses duckdb for state
+      - name: Install SQLMesh + Dependencies
+        run: |
+          pip install sqlmesh
+          pip install snowflake-connector-python
+          pip install duckdb
+        shell: bash
 
-    - name: Setup SQLMesh config
-      run: |
-        cat << 'EOF' > config.yaml
-        gateways:
-          snowflake:
-            connection:
-              type: snowflake
-              account: fjhuipr-uf36774
-              user: JHULBERT
-              password: '@Belknap123'
-              database: PHANALYTICS_DEV
-              warehouse: AIRBYTE_WH
-              role: ACCOUNTADMIN
-            state_connection:
-              type: duckdb
-              database: snowflake_state.db
-        default_gateway: snowflake
-        model_defaults:
-          dialect: snowflake
-          start: 2024-11-16
-        EOF
-        
-    - name: Run SQLMesh
-      run: |
-        sqlmesh plan --force
-        sqlmesh run --force
+      - name: Run SQLMesh
+        run: |
+          sqlmesh plan --config sqlmesh/config.yaml --force
+          sqlmesh run --config sqlmesh/config.yaml --force
