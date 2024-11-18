@@ -22,22 +22,18 @@ jobs:
         python -m pip install --upgrade pip
         pip install sqlmesh
         pip install snowflake-connector-python
-        pip install duckdb
+        pip install duckdb  # Added because your config uses duckdb for state
 
     - name: Setup SQLMesh config
-      env:
-        SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-        SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
-        SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
       run: |
-        cat << EOF > config.yaml
+        cat << 'EOF' > config.yaml
         gateways:
           snowflake:
             connection:
               type: snowflake
-              account: ${SNOWFLAKE_ACCOUNT}
-              user: ${SNOWFLAKE_USER}
-              password: ${SNOWFLAKE_PASSWORD}
+              account: fjhuipr-uf36774
+              user: JHULBERT
+              password: '@Belknap123'
               database: PHANALYTICS_DEV
               warehouse: AIRBYTE_WH
               role: ACCOUNTADMIN
