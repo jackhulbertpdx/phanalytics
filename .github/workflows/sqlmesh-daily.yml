@@ -2,33 +2,45 @@ name: SQLMesh Daily Run
 
 on:
   schedule:
-    # Runs at 2 AM UTC every day
-    - cron: '0 2 * * *'
-  workflow_dispatch:  # Allows manual trigger
+    - cron: '0 0 * * *'  # This runs the workflow daily at midnight UTC
+  workflow_dispatch:  # Allow manual triggering
 
 jobs:
-  sqlmesh_run:
+  sqlmesh:
+    name: SQLMesh Daily Run
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: write
+      issues: write
+      checks: write
+      pull-requests: write
+    env:
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__TYPE: "snowflake"
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__ACCOUNT: "fjhuipr-uf36774"
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__USER: "JHULBERT"
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__PASSWORD: "@Belknap123"
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__DATABASE: "PHANALYTICS_DEV"
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__WAREHOUSE: "AIRBYTE_WH"
+      SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__ROLE: "ACCOUNTADMIN"
+      SQLMESH__DEFAULT_GATEWAY: "snowflake"
+      SQLMESH__MODEL_DEFAULTS__DIALECT: "snowflake"
+
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install sqlmesh
-        pip install snowflake-connector-python
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install sqlmesh[snowflake]
+          pip install duckdb  # For state management
 
-    - name: Create secure config
-      run: |
-        echo "${{ secrets.SQLMESH_CONFIG }}" > config.yaml
-      
-    - name: Run SQLMesh
-      run: |
-        sqlmesh plan --force
-        sqlmesh run --force
+      - name: Run SQLMesh
+        run: |
+          sqlmesh plan --force
+          sqlmesh run --force
