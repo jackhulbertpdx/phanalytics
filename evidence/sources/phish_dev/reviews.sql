@@ -12,4 +12,4 @@
          posted_at,
         artist_name,
         review_text
-    from phish_reviews
+    from  PHISH_REVIEWS

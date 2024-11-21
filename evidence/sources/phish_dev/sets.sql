@@ -1,8 +1,6 @@
 select 
-SET_ID,
 cast(SHOW_ID as VARCHAR) show_id,
 year(show_date) as year,
-SET_NAME,
 TOUR_NAME,
 VENUE,
 SHOW_DATE,
@@ -87,5 +85,5 @@ AVERAGE_RATING,
 MEDIAN_RATING,
 LATITUDE,
 LONGITUDE
-from PHISH_DEV.DBT_JHULBERT.RECENT_SETS 
+from PHISH_SETS
 where STATE !='Hawaii' or state_name !='HI'
