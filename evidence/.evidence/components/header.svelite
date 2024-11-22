@@ -2,6 +2,7 @@
 	import BreadCrumbs from '$lib/ui/BreadCrumbs.svelte';
 	import Hamburger from '$lib/ui/Hamburger.svelte';
 	import PageMenu from '$lib/ui/PageMenu.svelte';
+	import * as echarts from 'echarts/lib/echarts';
 	export let fileTree;
 	import { page } from '$app/stores';
 	export let open = false;
