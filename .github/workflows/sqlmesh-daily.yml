@@ -25,7 +25,6 @@ jobs:
         
     - name: Run SQLMesh
       run: |
-        sqlmesh 
         sqlmesh run
       env:
         SNOWFLAKE_ACCOUNT: "fjhuipr-uf36774"
