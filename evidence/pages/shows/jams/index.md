@@ -31,7 +31,7 @@ avg(length) length,
 from sets 
 where show_date between '${inputs.date_range.start}' and '${inputs.date_range.end}'
 group by all
-order by show_date desc limit 5000
+order by show_date desc limit 500
 
 ```
 
@@ -55,7 +55,7 @@ avg(length) length,
 from sets 
 where show_date between '${inputs.date_range.start}' and '${inputs.date_range.end}'
 group by all
-order by show_date desc limit 5000
+order by show_date desc limit 500
 
 ```
 
