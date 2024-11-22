@@ -26,7 +26,7 @@ jobs:
     - name: Run SQLMesh
       run: |
         sqlmesh 
-        sqlmesh plan prod
+        sqlmesh run
       env:
         SNOWFLAKE_ACCOUNT: "fjhuipr-uf36774"
         SNOWFLAKE_USER: "JHULBERT"
