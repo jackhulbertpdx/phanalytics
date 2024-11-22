@@ -1,11 +1,46 @@
----
-title: Phanalytics 
----
-Phanalytics is a hub for insights on Phish shows, sets, and songs.  <br>
-All source data comes from the homies at [phish.net](https://phish.net), Spotify, and other third party sources.
 
-<LinkButton url='/shows'>
-Explore Shows</LinkButton> <LinkButton url='/songs'>
-Explore Songs</LinkButton>
-<img src="https://media1.tenor.com/m/Git0vUKLuXsAAAAd/phish.gif" alt="Alt text" style="float:left; margin-right:1000px;" />
+```sql songs
+select
+song,
+min(show_date) as debuted,
+max(show_date) as last_played,
+round(avg(length)) as duration,
+count(distinct show_id) as lifetime_plays
+from sets
+where length >1
+group by 1
+order by lifetime_plays desc
+```
+```sql song_count
+select
+count(distinct song) as songs,
+round(avg(length)) duration
+from sets
+```
+
+<BigValue 
+data={song_count} 
+value=songs
+title="All Songs in Catalog"
+/>
+<BigValue 
+data={song_count} 
+value=duration
+title="Average Length (Min)"
+/>
 <br>
+Explore Songs by:
+<br>
+<LinkButton url='/songs/popular/'>
+Popularity 📈</LinkButton> 
+<LinkButton url='/songs/sequence/'>
+Openers and Closers 🚪</LinkButton> 
+
+
+<Histogram
+    data={songs} 
+    x=duration 
+    xAxisTitle="Duration in Minutes"
+    title="Distribution of Songs by Duration (minutes)"
+    colorPalette={['#800080']}
+/>

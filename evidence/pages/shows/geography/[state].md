@@ -3,8 +3,8 @@
 ```sql geo
 select
 count(distinct show_id) as shows,
-min(concat(MONTHNAME(SHOW_DATE),' ',YEAR(SHOW_DATE))) as first_show,
-max(concat(MONTHNAME(SHOW_DATE),' ',YEAR(SHOW_DATE))) as last_show,
+concat(MIN(MONTHNAME(SHOW_DATE)),' ',MIN(YEAR(SHOW_DATE)))  as first_show,
+concat(MAX(MONTHNAME(SHOW_DATE)),' ',MAX(YEAR(SHOW_DATE))) as last_show,
 from sets
 where state_name = ('${params.state}') and latitude!=0 and longitude !=0
 
@@ -16,8 +16,8 @@ state,
 latitude,
 longitude,
 count(distinct show_id) as shows,
-min(concat(MONTHNAME(SHOW_DATE),' ',YEAR(SHOW_DATE))) as first_show,
-max(concat(MONTHNAME(SHOW_DATE),' ',YEAR(SHOW_DATE))) as last_show,
+concat(MIN(MONTHNAME(SHOW_DATE)),' ',MIN(YEAR(SHOW_DATE)))  as first_show,
+concat(MAX(MONTHNAME(SHOW_DATE)),' ',MAX(YEAR(SHOW_DATE))) as last_show,
 from sets
 where state_name = ('${params.state}') and latitude != 0 and latitude !=0
 group by all
@@ -29,8 +29,8 @@ state,
 latitude,
 longitude,
 count(distinct show_id) as shows,
-min(concat(MONTHNAME(SHOW_DATE),' ',YEAR(SHOW_DATE))) as first_show,
-max(concat(MONTHNAME(SHOW_DATE),' ',YEAR(SHOW_DATE))) as last_show,
+concat(MIN(MONTHNAME(SHOW_DATE)),' ',MIN(YEAR(SHOW_DATE)))  as first_show,
+concat(MAX(MONTHNAME(SHOW_DATE)),' ',MAX(YEAR(SHOW_DATE))) as last_show,
 from sets
 where state_name = ('${params.state}') and latitude != 0 and latitude !=0
 group by all
@@ -48,8 +48,8 @@ ARTIST_NAME,
 latitude,
 longitude,
 show_date,
-min(concat(MONTHNAME(SHOW_DATE),' ',YEAR(SHOW_DATE))) as first_show,
-max(concat(MONTHNAME(SHOW_DATE),' ',YEAR(SHOW_DATE))) as last_show
+concat(MIN(YEAR(SHOW_DATE)),'-',MIN(MONTH(SHOW_DATE)))  as first_show,
+concat(MAX(YEAR(SHOW_DATE)),'-',MAX(MONTH(SHOW_DATE))) as last_show
 from sets
 where state_name = ('${params.state}') and latitude != 0 and latitude !=0
 group by all
