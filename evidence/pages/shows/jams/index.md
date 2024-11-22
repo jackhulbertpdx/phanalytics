@@ -10,7 +10,6 @@ group by 1
 
 ```sql jams
 select
-show_id,
 show_date,
 tour_name,
 state,
@@ -31,16 +30,15 @@ avg(valence) valence,
 avg(length) length,
 from sets 
 where show_date between '${inputs.date_range.start}' and '${inputs.date_range.end}'
-
+and show_date>2000-01-01
 group by all
-order by median(jam_score) desc
+order by show_date desc limit 5000
 
 ```
 
 
 ```sql jams_filtered
 select
-show_id,
 show_date,
 tour_name,
 venue,
@@ -58,7 +56,7 @@ avg(length) length,
 from sets 
 where show_date between '${inputs.date_range.start}' and '${inputs.date_range.end}'
 group by all
-order by median(jam_score) desc 
+order by show_date desc limit 5000
 
 ```
 
