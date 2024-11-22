@@ -7,6 +7,7 @@ options:
   warehouse: AIRBYTE_WH
   role: ACCOUNTADMIN
   username: JHULBERT
+  password: '@Belknap123'
   schema: DEV_T3_PRESENTATION
   authenticator: userpass
   resultPrefetch: 2
