@@ -6,6 +6,7 @@ options:
   database: PHANALYTICS_DEV
   warehouse: AIRBYTE_WH
   role: ACCOUNTADMIN
+  username: JHULBERT
   schema: DEV_T3_PRESENTATION
   authenticator: userpass
   resultPrefetch: 2
