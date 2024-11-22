@@ -1,12 +1,8 @@
 name: SQLMesh Daily Run
-
 on:
   schedule:
-    # Runs at 00:00 UTC every day
     - cron: '0 0 * * *'
-  # Optionally allow manual triggers
   workflow_dispatch:
-
 jobs:
   sqlmesh:
     runs-on: ubuntu-latest
@@ -25,24 +21,41 @@ jobs:
         python -m pip install --upgrade pip
         pip install sqlmesh
         
-    - name: Configure SQLMesh
+    - name: Initialize SQLMesh if needed
       run: |
-        # Add any configuration setup steps here
-        echo "Setting up SQLMesh configuration..."
+        if [ ! -f "sqlmesh.yaml" ]; then
+          sqlmesh init
+          # Configure the sqlmesh.yaml file
+          cat > sqlmesh.yaml <<EOL
+        model_defaults:
+          dialect: snowflake
+        
+        gateways:
+          snowflake:
+            connection:
+              type: snowflake
+              account: "fjhuipr-uf36774"
+              user: "JHULBERT"
+              password: "@Belknap123"
+              database: "PHANALYTICS_DEV"
+              warehouse: "AIRBYTE_WH"
+              role: "ACCOUNTADMIN"
+        
+        default_gateway: snowflake
+        EOL
+        fi
         
     - name: Run SQLMesh
       run: |
         sqlmesh run --prod
       env:
-        SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__TYPE: "snowflake"
-        SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__ACCOUNT: "fjhuipr-uf36774"
-        SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__USER: "JHULBERT"
-        SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__PASSWORD: "@Belknap123"
-        SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__DATABASE: "PHANALYTICS_DEV"
-        SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__WAREHOUSE: "AIRBYTE_WH"
-        SQLMESH__GATEWAYS__SNOWFLAKE__CONNECTION__ROLE: "ACCOUNTADMIN"
-        SQLMESH__DEFAULT_GATEWAY: "snowflake"
-        SQLMESH__MODEL_DEFAULTS__DIALECT: "snowflake"
+        SNOWFLAKE_ACCOUNT: "fjhuipr-uf36774"
+        SNOWFLAKE_USER: "JHULBERT"
+        SNOWFLAKE_PASSWORD: "@Belknap123"
+        SNOWFLAKE_DATABASE: "PHANALYTICS_DEV"
+        SNOWFLAKE_WAREHOUSE: "AIRBYTE_WH"
+        SNOWFLAKE_ROLE: "ACCOUNTADMIN"
+
 
 
 
