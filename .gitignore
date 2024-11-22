@@ -188,14 +188,13 @@ rust/cubesql/profile.json
 .vimspector.json
 
 ##Evidence
-.evidence/template
-.svelte-kit
-build
-node_modules
-.DS_Store
-static/data
-*.options.yaml
-.vscode/settings.json
-.env
-.evidence/meta
-/Users/jackhulbert/Desktop/Data Science Projects/phanalytics/phanalytics/evidence/sources/phish_dev/connection.yaml 
+##.evidence/template
+##.svelte-kit
+##build
+##node_modules
+##.DS_Store
+##static/data
+##*.options.yaml
+##.vscode/settings.json
+##.env
+##.evidence/meta
