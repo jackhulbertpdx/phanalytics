@@ -60,6 +60,7 @@ SELECT
     show_date, 
     COUNT( distinct show_id) as shows
 FROM sets
+where show_date between '${inputs.date_range.start}' and '${inputs.date_range.end}'
 GROUP BY 1
 ORDER BY 1 desc;
 ```
@@ -141,6 +142,9 @@ echartsOptions={{
 <Tabs color=#5A5A5A
 >
 <Tab label="Heatmap of Shows">
+
+
+
 
 <CalendarHeatmap
     data={by_day}
