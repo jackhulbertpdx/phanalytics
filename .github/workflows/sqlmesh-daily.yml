@@ -25,7 +25,7 @@ jobs:
         
     - name: Run SQLMesh
       run: |
-        sqlmesh run --prod --y
+        sqlmesh plan prod --y --force
       env:
         SNOWFLAKE_ACCOUNT: "fjhuipr-uf36774"
         SNOWFLAKE_USER: "JHULBERT"
