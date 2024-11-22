@@ -14,7 +14,7 @@ order by lifetime_plays desc
 ```sql song_count
 select
 count(distinct song) as songs,
-round(avg(length)) duration
+round(avg(length),1) duration
 from sets
 ```
 

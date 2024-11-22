@@ -23,7 +23,7 @@ Historically, there have been <b><Value data={shows} column=shows /></b> shows p
 
 
 
-<Tabs color=#800080>
+<Tabs color=#5A5A5A>
 
 
     

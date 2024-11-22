@@ -55,6 +55,28 @@ order by show_date desc
 limit 10
 ```
 
+```sql by_day
+SELECT 
+    show_date, 
+    COUNT( distinct show_id) as shows
+FROM sets
+GROUP BY 1
+ORDER BY 1 desc;
+```
+
+```sql all_shows
+select 
+venue,
+concat(city,', ',state) City,
+'/shows/recent/' || show_id as link,
+show_date,
+    opener,
+    closer from sets
+group by 1,2,3,4,5,6
+order by show_date desc
+```
+
+
  <b><div style="text-align: left"> Show Stats </div> </b>
 <BigValue 
 title="This Year"
@@ -95,10 +117,7 @@ Geo 🌎</LinkButton>
 Jams 🎸</LinkButton> 
 
 
-
-<br>
-<br>
- <b><div style="text-align: left"> Trend of Shows Played </div> </b>
+ <b><div style="text-align: left"> Number of Shows by Year </div> </b>
 
 <AreaChart 
     data={time_series_year} 
@@ -119,6 +138,42 @@ echartsOptions={{
 }}
 />
 
+<Tabs color=#5A5A5A
+>
+<Tab label="Heatmap of Shows">
+
+<CalendarHeatmap
+    data={by_day}
+    date=show_date
+    value=shows
+    link=link
+    colorPalette={['#800080','navy']}
+    legend=false
+/>
+
+
+
+ </Tab>
+  <Tab label="All Shows">
+
+
+<DataTable data={all_shows}
+link=link
+/>
+
+
+
+ </Tab>
+</Tabs>
 
 
 Source: [phish.net](https://phish.net)
+
+
+
+
+
+
+
+
+  
