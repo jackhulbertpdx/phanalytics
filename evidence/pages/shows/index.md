@@ -60,7 +60,7 @@ SELECT
     show_date, 
     COUNT( distinct show_id) as shows
 FROM sets
-where show_date between '${inputs.date_range.start}' and '${inputs.date_range.end}'
+where show_date between '${inputs.date.start}' and '${inputs.date.end}'
 GROUP BY 1
 ORDER BY 1 desc;
 ```
@@ -76,6 +76,14 @@ show_date,
 group by 1,2,3,4,5,6
 order by show_date desc
 ```
+
+```sql date
+select 
+show_date,
+ from sets
+
+```
+
 
 
  <b><div style="text-align: left"> Show Stats </div> </b>
@@ -144,6 +152,11 @@ echartsOptions={{
 <Tab label="Heatmap of Shows">
 
 
+
+<DateRange
+    name=date
+    defaultValue={'Year to Date'}
+/>
 
 
 <CalendarHeatmap
