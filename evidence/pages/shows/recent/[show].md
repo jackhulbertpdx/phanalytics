@@ -32,10 +32,7 @@ Historically, there have been <b><Value data={shows} column=shows /></b> shows p
 <Tab label="Setlist">
 
 <DataTable data={set_list} link=link />
-rowShading=true
-rowNumbers=true
-rowLines=true
-/>
+
 
 </Tab>
     <Tab label="Similar shows">
@@ -91,7 +88,7 @@ avg(MEDIAN_RATING) plays,
 avg(energy) energy,
 avg(valence) valence, 
 avg(length) length,
-from sets 
+from sets where jam_score>0
 group by all
 order by show_date desc limit 500
 
