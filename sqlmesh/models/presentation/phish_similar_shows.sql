@@ -33,7 +33,7 @@ show_pairs AS (
     FROM show_setlists a
     INNER JOIN show_setlists b
     ON a.show_id < b.show_id  -- Keep this to control record count
-    AND ABS(a.show_year - b.show_year) <= 15
+    AND ABS(a.show_year - b.show_year) <= 25
 ),
 similarity_calcs AS (
     -- Do array operations only on time-filtered pairs
@@ -73,7 +73,7 @@ final_filtered AS (
             sc.shared_count::FLOAT / (sc.base_total + sc.other_total - sc.shared_count)::FLOAT DESC,
             sc.shared_count DESC,
             -ABS(YEAR(sc.base_date) - YEAR(sc.similar_date))  -- Prefer closer years
-    ) <= 15
+    ) <= 25
 ),
 -- Add reverse direction matches
 bidirectional_matches AS (
@@ -107,7 +107,7 @@ bidirectional_matches AS (
         tour_similarity,
         year_difference
     FROM final_filtered
-    WHERE similarity_score >= 0.4  -- Only add reverse direction for very similar shows
+    WHERE similarity_score >= 0.45  -- Only add reverse direction for very similar shows
 )
 SELECT 
     f.base_show_id,
