@@ -18,7 +18,6 @@ renamed as (
     select
         _airbyte_raw_id,
         _airbyte_extracted_at,
-        _airbyte_meta,
         city,
         state,
         venuename as venue,
@@ -33,8 +32,7 @@ renamed as (
         showdate ,
         tourname as tour_name,
         created_at,
-        updated_at,
-
+        updated_at
     from source
 
 )

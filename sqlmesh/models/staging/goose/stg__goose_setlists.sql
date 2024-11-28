@@ -35,7 +35,6 @@ renamed as (
         tracktime,
         transition
         isjamchart,
-        isreprise,
         soundcheck
         isjam,
         artist as artist_name,

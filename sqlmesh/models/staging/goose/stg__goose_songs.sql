@@ -13,7 +13,6 @@ with
         select
             id as songid,
             isoriginal as is_original,
-            slug,
             name as song,
             ORIGINAL_ARTIST as artist,
             _airbyte_extracted_at

@@ -19,7 +19,6 @@ renamed as (
     select
         _airbyte_raw_id,
         _airbyte_extracted_at,
-        _airbyte_meta,
         artist,
         artist_id as artistid,
         show_id as showid,

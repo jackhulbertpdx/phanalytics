@@ -18,7 +18,7 @@ renamed as (
 
     select
         _airbyte_raw_id,
-        setnumber as "set",  -- renamed to avoid keyword
+        setnumber as "set", 
         city,
         state,
         venuename,
@@ -33,7 +33,6 @@ renamed as (
         uniqueid,
         tracktime,
         artist,
-        ISRECOMMENDED,
         FOOTNOTE as setlistnotes,
         _airbyte_extracted_at
     from source
