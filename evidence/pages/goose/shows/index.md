@@ -184,7 +184,7 @@ link=link
 </Tabs>
 
 
-Source: [elgoose.net](https://elgoose.net)
+Source: [phish.net](https://phish.net)
 
 
 
@@ -193,4 +193,4 @@ Source: [elgoose.net](https://elgoose.net)
 
 
 
-  
+  <style> legend { font-size:0.9em; color:#888; font-weight:700; } </style>

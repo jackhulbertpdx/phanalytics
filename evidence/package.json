@@ -27,7 +27,8 @@
     "@evidence-dev/postgres": "^1.0.6",
     "@evidence-dev/snowflake": "^1.2.1",
     "@evidence-dev/sqlite": "^2.0.6",
-    "@evidence-dev/trino": "^1.0.8"
+    "@evidence-dev/trino": "^1.0.8",
+    "uikit": "^3.21.16"
   },
   "overrides": {
     "jsonwebtoken": "9.0.0",
