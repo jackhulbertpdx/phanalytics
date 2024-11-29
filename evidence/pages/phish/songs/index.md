@@ -31,7 +31,7 @@ title="Average Length (Min)"
 <br>
 Explore Songs by:
 <br>
-<LinkButton url='/songs/popular/'>
+<LinkButton url='/phish/songs/popular/'>
 Popularity 📈</LinkButton> 
 <LinkButton url='/songs/sequence/'>
 Openers and Closers 🚪</LinkButton> 

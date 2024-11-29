@@ -39,4 +39,4 @@ Click to View Show Details.
 link=link
 />
 
-Sources: [phish.net](https://phish.net)
+Sources: [elgoose.net](https://elgoose.net)

@@ -118,11 +118,11 @@ value=lifetime
 <br>
 Explore Shows by:
 <br>
-<LinkButton url='/shows/recent/'>
+<LinkButton url='/phish/shows/recent/'>
 Recent</LinkButton> 
-<LinkButton url='/shows/geography/'>
+<LinkButton url='/phish/shows/geography/'>
 Geo 🌎</LinkButton> 
-<LinkButton url='/shows/jams/'>
+<LinkButton url='/phish/shows/jams/'>
 Jams 🎸</LinkButton> 
 
 

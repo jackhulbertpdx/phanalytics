@@ -46,7 +46,7 @@ GROUP BY
 
     
     <Tab label="USA">
-Phish has played shows in <b><Value data={states} column=states/></b>  out of 50 US states.
+Goose has played shows in <b><Value data={states} column=states/></b>  out of 50 US states.
 <br>
 <br>
 
@@ -74,4 +74,4 @@ Phish has played shows in <b><Value data={states} column=states/></b>  out of 50
 
 
 
-Source: [phish.net](https://phish.net)
+Source: [elgoose.net](https://elgoose.net)

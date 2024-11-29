@@ -65,7 +65,7 @@ case when a.spotify_song_id = '${params.spotify_song_id}' then s.song else 'All 
     avg(s.JAM_SCORE) JAM_SCORE,
     avg(case when a.spotify_song_id = '${params.spotify_song_id}' then s.JAM_SCORE*15 else 10 end ) as JS 
     from goose_sets s
-left join (select song, min(spotify_song_id) spotify_song_id from songs group by 1) a on s.song = a.song 
+left join (select song, min(spotify_song_id) spotify_song_id from songs group by 1) a on s.song = a.song  where JAM_SCORE>0 and s.song is not null
 group by 1,2,3
 ```
 

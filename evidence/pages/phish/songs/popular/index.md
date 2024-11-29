@@ -14,7 +14,7 @@ select
 song,
 EARLIEST_SHOW_DATE,
 LATEST_SHOW_DATE,
-'/songs/popular/'|| spotify_song_id as link,
+'/phish/songs/popular/'|| spotify_song_id as link,
 sum(plays) plays
 from songs
 where spotify_song_id is not null 

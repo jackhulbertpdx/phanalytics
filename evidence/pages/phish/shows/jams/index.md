@@ -4,7 +4,8 @@ title: Jam Score
 
 ```sql date
 select show_date
-from sets
+from sets where jam_score > 0
+
 group by 1
 ```
 
@@ -30,8 +31,9 @@ avg(valence) valence,
 avg(length) length,
 from sets 
 where show_date between '${inputs.date_range.start}' and '${inputs.date_range.end}'
+and jam_score > 0
 group by all
-order by show_date desc limit 500
+order by jam_score desc 
 
 ```
 
@@ -54,8 +56,9 @@ avg(valence) valence,
 avg(length) length,
 from sets 
 where show_date between '${inputs.date_range.start}' and '${inputs.date_range.end}'
+and jam_score > 0
 group by all
-order by show_date desc limit 500
+order by jam_score desc 
 
 ```
 
