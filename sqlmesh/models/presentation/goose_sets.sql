@@ -3,19 +3,19 @@ MODEL (
     kind FULL,
     cron '@daily',
     grain show_id
-  );
+);
 
-with
-    source as (select * from DEV_T2_EDW.FCT_GOOSE_SETS),
+with 
     shows as (select * from DEV_T2_EDW.FCT_GOOSE_SHOWS),
+    source as (select * from DEV_T2_EDW.FCT_GOOSE_SETS),
     spotify as (select * from DEV_T2_EDW.DIM_GOOSE_SPOTIFY_TRACKS),
-        openers as (
+    openers as (
         select show_id, is_original as opener_original, song_name as opener
         from source
         where sequence = 1
         group by 1, 2, 3
     ),
-    a as (
+      a as (
         select
             show_id,
             song_name,
@@ -43,7 +43,7 @@ with
                 then left(song_name, position('(Live)' in song_name) - 1)
                 else song_name
             end) song_name,
-            avg(duration_seconds / 60 ) as length,
+            avg(duration_seconds / 60) as length,
             avg(tempo) tempo,
             avg(energy) energy,
             avg(valence) valence,
@@ -62,45 +62,42 @@ with
             ) as jam_score
         from spotify
         group by all
-    ),
+    )
 
-b as (
 select 
-a.show_id,
-a.tour_name,
-a.show_venue as venue,
-a.show_date,
-a.artist,
-a.song_name as song,
-a.sequence as song_order,
-a.show_city as city,
-a.show_state as state,
-a.lat as latitude,
-a.long as longitude,
-a.country as country,
-sh.artist as performing_artist,
-case when a.is_original=false then 'Cover' else 'Original' end type,
-b.opener_original,
-b.opener,
-c.closer_original,
-c.closer,
-a.state_name,
-(ifnull(d.length,0) ) length,
-ifnull(d.tempo,0) tempo,
-ifnull(d.energy,0) energy,
-ifnull(d.valence,0) valence,
-ifnull(d.liveness,0) liveness,
-ifnull(d.loudness,0) loudness,
-ifnull(d.acousticness,0) acousticness,
-ifnull(d.danceability,0) danceability,
-ifnull(d.time_signature,0) time_signature,
-ifnull(d.instrumentalness,0) instrumentalness,
-ifnull(d.jam_score,0) jam_score
-from
-source a
-left join shows sh on sh.show_id = a.show_id
-left join openers b on a.show_id = b.show_id
-left join closers c on a.show_id = c.show_id
-left join jam_score d on a.song_name = d.song_name
-)
-select * from b group by all
+    sh.show_id,
+    sh.tour_name,
+    sh.show_venue as venue,
+    sh.show_date,
+    sh.artist,
+    s.song_name as song,
+    s.sequence as song_order,
+    sh.show_city as city,
+    sh.show_state_us as state,
+    sh.lat as latitude,
+    sh.long as longitude,
+    sh.show_country as country,
+    sh.artist as performing_artist,
+    case when s.is_original=false then 'Cover' else 'Original' end type,
+    o.opener_original,
+    o.opener,
+    c.closer_original,
+    c.closer,
+    s.state_name,
+    coalesce(j.length, 0) length,
+    coalesce(j.tempo, 0) tempo,
+    coalesce(j.energy, 0) energy,
+    coalesce(j.valence, 0) valence,
+    coalesce(j.liveness, 0) liveness,
+    coalesce(j.loudness, 0) loudness,
+    coalesce(j.acousticness, 0) acousticness,
+    coalesce(j.danceability, 0) danceability,
+    coalesce(j.time_signature, 0) time_signature,
+    coalesce(j.instrumentalness, 0) instrumentalness,
+    coalesce(j.jam_score, 0) jam_score
+from shows sh
+left join source s on s.show_id = sh.show_id
+left join openers o on sh.show_id = o.show_id
+left join closers c on sh.show_id = c.show_id
+left join jam_score j on s.song_name = j.song_name
+group by all

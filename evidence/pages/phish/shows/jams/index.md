@@ -41,7 +41,7 @@ select
 show_date,
 tour_name,
 venue,
-'/shows/recent/' || show_id as link,
+'/phish/shows/recent/' || show_id as link,
 avg(jam_score) jam_score,
 avg(acousticness) acousticness,
 avg(instrumentalness) instrumentalness,

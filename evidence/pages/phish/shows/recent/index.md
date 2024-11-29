@@ -6,7 +6,7 @@ title: Recent Shows
 select 
 venue,
 concat(city,', ',state) City,
-'/shows/recent/' || show_id as link,
+'/phish/shows/recent/' || show_id as link,
 show_date
 from sets
 group by 1,2,3,4

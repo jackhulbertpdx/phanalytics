@@ -47,7 +47,7 @@ group by 1,2
 select 
 venue,
 concat(city,', ',state) City,
-'/show/' || show_id as Details,
+'/phish/show/' || show_id as Details,
 show_date
 from sets
 group by 1,2,3,4
@@ -69,7 +69,7 @@ ORDER BY 1 desc;
 select 
 venue,
 concat(city,', ',state) City,
-'/shows/recent/' || show_id as link,
+'/phish/shows/recent/' || show_id as link,
 show_date,
     opener,
     closer from sets

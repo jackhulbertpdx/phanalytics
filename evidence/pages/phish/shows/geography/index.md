@@ -6,7 +6,7 @@ title: By Geography
 SELECT 
  state,
  state_name,
- '/shows/geography/' || (state_name) as link,
+ '/phish/shows/geography/' || (state_name) as link,
 count( distinct show_id) shows
 FROM 
 sets
@@ -28,7 +28,7 @@ from sets
  country,
  min(show_date) as first_show,
  max(show_date) as latest_show,
-  '/shows/countries/' || (country) as link,
+  '/phish/shows/countries/' || (country) as link,
  '/'||country ||'.png' as flag,
 count( distinct show_id) shows
 FROM 

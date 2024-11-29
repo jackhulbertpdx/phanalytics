@@ -16,7 +16,7 @@ group by 1,2,3,4,5,6
 ```sql set_list
 select
 a.song as song,
-'/songs/popular/'|| b.spotify_song_id as link
+'/phish/songs/popular/'|| b.spotify_song_id as link
 from sets a
 left join songs b on a.song = b.song 
 where a.show_id = lower('${params.show}')
@@ -46,7 +46,7 @@ city,
 STATE,
 tour_name,    
 shared_songs_list,
-'/shows/recent/' || similar_show_id as link
+'/phish/shows/recent/' || similar_show_id as link
 from similar_shows
 where base_show_id = lower('${params.show}')
 group by all

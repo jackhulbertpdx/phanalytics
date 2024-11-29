@@ -83,4 +83,3 @@ JAM_SCORE,
 LATITUDE,
 LONGITUDE
 from GOOSE_SETS
-where STATE !='Hawaii' or state_name !='HI'
