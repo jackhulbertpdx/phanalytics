@@ -33,7 +33,7 @@ Explore Songs by:
 <br>
 <LinkButton url='/phish/songs/popular/'>
 Popularity 📈</LinkButton> 
-<LinkButton url='/songs/sequence/'>
+<LinkButton url='/phish/songs/sequence/'>
 Openers and Closers 🚪</LinkButton> 
 
 

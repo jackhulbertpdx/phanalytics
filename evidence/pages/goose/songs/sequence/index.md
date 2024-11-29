@@ -12,6 +12,7 @@ SELECT
     COUNT(show_id) AS shows
 FROM 
  goose_sets
+where opener is not null and closer is not null
 GROUP BY 
     opener, closer,artist_name
 ORDER BY 
@@ -27,7 +28,7 @@ min(SHOW_DATE) first_play,
 max(SHOW_DATE) last_play,
     COUNT( distinct show_id) AS shows
 FROM 
- goose_sets
+ goose_sets where opener is not null
 GROUP BY all
 ORDER BY 
     shows DESC
@@ -41,7 +42,7 @@ min(SHOW_DATE) first_play ,
 max(SHOW_DATE) last_play,
     COUNT( distinct show_id) AS shows
 FROM 
- goose_sets
+ goose_sets where closer is not null
 GROUP BY all
 ORDER BY 
     shows DESC
