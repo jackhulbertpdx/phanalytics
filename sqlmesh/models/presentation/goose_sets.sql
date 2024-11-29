@@ -94,7 +94,8 @@ select
     coalesce(j.danceability, 0) danceability,
     coalesce(j.time_signature, 0) time_signature,
     coalesce(j.instrumentalness, 0) instrumentalness,
-    coalesce(j.jam_score, 0) jam_score
+    coalesce(j.jam_score, 0) jam_score,
+    source
 from shows sh
 left join source s on s.show_id = sh.show_id
 left join openers o on sh.show_id = o.show_id

@@ -38,8 +38,6 @@ renamed as (
         soundcheck
         isjam,
         artist as artist_name,
-        isoriginal as is_original,
-        _airbyte_extracted_at
-    from source
+        isoriginal as is_original    from source
 )
 select * from renamed

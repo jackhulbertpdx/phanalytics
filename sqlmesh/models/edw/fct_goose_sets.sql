@@ -81,6 +81,7 @@ joined as (
         WHEN 'WY' THEN 'Wyoming'
         ELSE 'Unknown'
     END AS state_name,
+    'goose' as source,
         coalesce(cast(c.lat as text),0) lat,
         coalesce(cast(c.lng as text),0) long        from sets s 
         left join c on s.state = c.state_id and (s.city = c.city_ascii or  s.city = c.city) )
