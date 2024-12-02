@@ -1,7 +1,7 @@
 
 select
-    base_show_id,
-    similar_show_id,
+   cast( base_show_id as varchar) base_show_id,
+   cast(  similar_show_id as varchar) similar_show_id,
     show_date,
     venue,
     city,

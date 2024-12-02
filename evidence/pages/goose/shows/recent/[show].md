@@ -3,14 +3,14 @@
 ```sql shows
 select
 city,
-show_id,
+cast(show_id as string) show_id,
 venue,
 artist_name,
 STATE,
 show_date,
 count( show_id) as shows
 from goose_sets
-where show_id = lower('${params.show}')
+where cast(show_id as string) = lower('${params.show}')
 group by 1,2,3,4,5,6
 ```
 ```sql set_list
