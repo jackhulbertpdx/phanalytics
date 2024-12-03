@@ -2,12 +2,12 @@
 name: phish_dev
 type: snowflake
 options:
-  account: ${{ secrets.EVIDENCE_SF_ACCOUNT }}
-  database: ${{ secrets.SNOWFLAKE_DATABASE }}
-  warehouse: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
-  role: ${{ secrets.SNOWFLAKE_ROLE }}
-  username: ${{ secrets.SNOWFLAKE_USERNAME }}
-  password: ${{ secrets.SNOWFLAKE_PASSWORD }}
-  schema: ${{ secrets.EVIDENCE_SF_SCHEMA }}
+  account: ${EVIDENCE_SF_ACCOUNT}
+  database: ${SNOWFLAKE_DATABASE}
+  warehouse: ${SNOWFLAKE_WAREHOUSE}
+  role: ${SNOWFLAKE_ROLE}
+  username: ${SNOWFLAKE_USERNAME}
+  password: ${SNOWFLAKE_PASSWORD}
+  schema: ${EVIDENCE_SF_SCHEMA}
   authenticator: userpass
   resultPrefetch: 2
