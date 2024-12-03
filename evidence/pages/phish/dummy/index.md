@@ -8,7 +8,7 @@ sidebar_link: false
 SELECT 
  state,
  state_name,
- '/shows/geography/' || (state_name) as link,
+ '/phish/shows/geography/' || (state_name) as link,
 count( distinct show_id) shows
 FROM 
 sets

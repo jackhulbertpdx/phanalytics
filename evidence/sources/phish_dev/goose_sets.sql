@@ -82,4 +82,4 @@ INSTRUMENTALNESS,
 JAM_SCORE,
 LATITUDE,
 LONGITUDE
-from GOOSE_SETS
+from GOOSE_SETS where show_date <= current_date()
