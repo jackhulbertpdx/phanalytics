@@ -1,7 +1,7 @@
 MODEL (
     name DEV_T2_EDW.fct_shows,
     kind FULL,
-    cron '@daily',
+    cron '@monthly',
     grain  show_id
   );
 with shows as (select * from DEV_T1_STAGING.stg__shows),

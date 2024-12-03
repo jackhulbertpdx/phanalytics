@@ -1,7 +1,7 @@
 MODEL (
     name DEV_T1_STAGING.stg__goose_venues,
     kind FULL,
-    cron '@daily',
+    cron '@monthly',
     grain  venueid
   );
 

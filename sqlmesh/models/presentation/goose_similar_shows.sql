@@ -1,7 +1,7 @@
 MODEL (
     name DEV_T3_PRESENTATION.GOOSE_SIMILAR_SHOWS,
     kind FULL,
-    cron '@daily',
+    cron '@monthly',
     grain base_show_id
 );
 WITH show_setlists AS (

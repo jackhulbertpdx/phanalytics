@@ -1,7 +1,7 @@
 MODEL (
     name DEV_T1_STAGING.stg__spotify_tracks,
     kind FULL,
-    cron '@daily',
+    cron '@monthly',
     grain id
   );
 

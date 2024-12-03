@@ -1,7 +1,7 @@
 MODEL (
     name DEV_T3_PRESENTATION.GOOSE_SETS,
     kind FULL,
-    cron '@daily',
+    cron '@monthly',
     grain show_id
 );
 

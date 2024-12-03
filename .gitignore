@@ -198,3 +198,4 @@ rust/cubesql/profile.json
 ##.vscode/settings.json
 ##.env
 ##.evidence/meta
+.env

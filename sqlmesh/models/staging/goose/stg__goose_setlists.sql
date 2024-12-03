@@ -1,7 +1,7 @@
 MODEL (
     name DEV_T1_STAGING.stg__goose_setlists,
     kind FULL,
-    cron '@daily',
+    cron '@monthly',
     grain  _airbyte_raw_id
 );
 with 

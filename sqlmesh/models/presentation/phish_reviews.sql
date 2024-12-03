@@ -1,7 +1,7 @@
 MODEL (
     name DEV_T3_PRESENTATION.PHISH_REVIEWS,
     kind FULL,
-    cron '@daily',
+    cron '@monthly',
     grain review_id
   );
 

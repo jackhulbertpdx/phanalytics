@@ -1,7 +1,7 @@
 MODEL (
     name DEV_T2_EDW.fct_goose_sets,
     kind FULL,
-    cron '@daily',
+    cron '@monthly',
     grain  set_id
   );
 

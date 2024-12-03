@@ -1,7 +1,7 @@
 MODEL (
     name DEV_T1_STAGING.stg__setlists,
     kind FULL,
-    cron '@daily',
+    cron '@monthly',
     grain  _airbyte_raw_id
 );
 with 

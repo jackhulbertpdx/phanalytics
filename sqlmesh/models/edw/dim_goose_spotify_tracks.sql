@@ -1,7 +1,7 @@
 MODEL (
     name DEV_T2_EDW.DIM_GOOSE_SPOTIFY_TRACKS,
     kind FULL,
-    cron '@daily',
+    cron '@monthly',
     grain spotify_song_id
   );
 

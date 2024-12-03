@@ -1,7 +1,7 @@
 MODEL (
     name DEV_T3_PRESENTATION.PHISH_SIMILAR_SHOWS,
     kind FULL,
-    cron '@daily',
+    cron '@monthly',
     grain base_show_id
 );
 

@@ -1,7 +1,7 @@
 MODEL (
     name DEV_T1_STAGING.stg__songs,
     kind FULL,
-    cron '@daily',
+    cron '@monthly',
     grain  songid
   );
 

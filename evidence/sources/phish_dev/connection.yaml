@@ -2,12 +2,12 @@
 name: phish_dev
 type: snowflake
 options:
-  account: gh34559.us-east-2.aws
-  database: PHANALYTICS_DEV
-  warehouse: AIRBYTE_WH
-  role: ACCOUNTADMIN
-  username: JHULBERT
-  password: '@Belknap123'
-  schema: DEV_T3_PRESENTATION
+  account: ${{ secrets.EVIDENCE_SF_ACCOUNT }}
+  database: ${{ secrets.SNOWFLAKE_DATABASE }}
+  warehouse: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
+  role: ${{ secrets.SNOWFLAKE_ROLE }}
+  username: ${{ secrets.SNOWFLAKE_USERNAME }}
+  password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+  schema: ${{ secrets.EVIDENCE_SF_SCHEMA }}
   authenticator: userpass
   resultPrefetch: 2

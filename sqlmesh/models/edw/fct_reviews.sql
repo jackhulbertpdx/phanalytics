@@ -1,7 +1,7 @@
 MODEL (
     name DEV_T2_EDW.fct_reviews,
     kind FULL,
-    cron '@daily',
+    cron '@monthly',
     grain  uid
   );
 with 
