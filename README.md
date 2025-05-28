@@ -1,5 +1,5 @@
 # Phanalytics.dev  
-[View the app](www.phanalytics.dev)
+[View the app](https://www.phanalytics.dev/)
 
 A comprehensive analytics platform for exploring and visualizing data from the jamband scene, specifically focusing on Phish and Goose. This application combines data from phish.net, elgoose.net, and Spotify to provide insights into shows, setlists, song metadata, and streaming analytics.
 
