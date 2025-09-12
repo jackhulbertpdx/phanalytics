@@ -1,21 +1,21 @@
-# Phanalytics.dev  
-[View the app](https://www.phanalytics.dev/)
+# Phanalytics.net  
+[View the app](https://www.phanalytics.net/)
 
 A comprehensive analytics platform for exploring and visualizing data from the jamband scene, specifically focusing on Phish and Goose. This application combines data from phish.net, elgoose.net, and Spotify to provide insights into shows, setlists, song metadata, and streaming analytics.
 
 ## Overview
 
-phanalytics.dev is a modern data stack application that processes and analyzes concert and streaming data using:
+phanalytics.net is a modern data stack application that processes and analyzes concert and streaming data using:
 - Airbyte for data integration
 - Snowflake for data warehousing
 - SQLMesh for data transformation
-- Evidence.dev for data visualization and presentation
+- Evidence.net for data visualization and presentation
 
 ## Architecture
 
 ```
 phish.net API ──┐
-elgoose.net API ├─ Airbyte ─→ Snowflake ─→ SQLMesh ─→ Evidence.dev ─→ Web Interface
+elgoose.net API ├─ Airbyte ─→ Snowflake ─→ SQLMesh ─→ Evidence.net ─→ Web Interface
 Spotify API ────┘
 ```
 
@@ -56,9 +56,9 @@ SQLMesh models in `/models` directory transform raw data into analytics-ready ta
 - Spotify streaming analytics and trends
 - Audio feature analysis and correlations
 
-### Visualization (Evidence.dev)
+### Visualization (Evidence.net)
 
-The `/pages` directory contains Evidence.dev pages for:
+The `/pages` directory contains Evidence.net pages for:
 - Show Explorer
 - Song Statistics
 - Setlist Analysis
