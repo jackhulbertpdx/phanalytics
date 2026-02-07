@@ -46,7 +46,7 @@ jobs:
           MOTHERDUCK_DATABASE: ${{ vars.MOTHERDUCK_DATABASE || 'phanalytics_dev' }}
         run: |
           cd sqlmesh
-          sqlmesh plan --auto-apply --no-prompts --exclude-model '*goose*' --exclude-model '*spotify*' --exclude-model 'seeds.cities'
+          sqlmesh plan --auto-apply --no-prompts
 
       - name: Notify on failure
         if: failure()
