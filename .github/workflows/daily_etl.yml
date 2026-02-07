@@ -36,12 +36,17 @@ jobs:
           cd extract
           python extract_phish.py
 
-      - name: Run transformations
+      - name: Install SQLMesh
+        run: |
+          pip install "sqlmesh[motherduck]"
+
+      - name: Run SQLMesh transformations
         env:
           MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
           MOTHERDUCK_DATABASE: ${{ vars.MOTHERDUCK_DATABASE || 'phanalytics_dev' }}
         run: |
-          python run_transforms.py
+          cd sqlmesh
+          sqlmesh plan --auto-apply --no-prompts
 
       - name: Notify on failure
         if: failure()
