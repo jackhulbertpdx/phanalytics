@@ -5,7 +5,7 @@ MODEL (
     grain id
   );
 
-with 
+with
 
 source as (
 
@@ -16,11 +16,10 @@ source as (
 renamed as (
 
     select
-        _airbyte_raw_id,
         id,
         slug,
         artist,
-        _airbyte_extracted_at
+        _extracted_at
 
     from source
 

@@ -2,24 +2,23 @@ MODEL (
     name DEV_T1_STAGING.stg__setlists,
     kind FULL,
     cron '@monthly',
-    grain  _airbyte_raw_id
+    grain  uniqueid
 );
-with 
+with
 source as (
     select * from DEV_T0_RAW.PHISH_SETLISTS
 ),
 
 renamed as (
     select
-        _airbyte_raw_id,
         gap,
-        set,  
+        set,
         city,
         meta,
         slug,
         song,
         isjam,
-        state,  
+        state,
         venue,
         showid,
         songid,
@@ -48,7 +47,7 @@ renamed as (
         is_original,
         setlistnotes,
         jamchart_description,
-        _airbyte_extracted_at
+        _extracted_at
     from source
 )
 select * from renamed

@@ -1,0 +1,10 @@
+# API and HTTP
+requests==2.31.0
+urllib3==2.1.0
+
+# Database
+duckdb==0.10.0
+pandas>=2.0.0
+
+# Utilities
+python-dotenv==1.0.0

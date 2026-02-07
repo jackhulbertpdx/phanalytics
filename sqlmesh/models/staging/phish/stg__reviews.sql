@@ -2,12 +2,12 @@ MODEL (
     name DEV_T1_STAGING.stg__reviews,
     kind FULL,
     cron '@monthly',
-    grain  uid
+    grain  reviewid
   );
 
 
 
-with 
+with
 
 source as (
 
@@ -34,7 +34,7 @@ renamed as (
         posted_at,
         artist_name,
         review_text,
-        _airbyte_extracted_at
+        _extracted_at
 
     from source
 

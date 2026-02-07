@@ -1,5 +1,14 @@
 
 gateways:
+  motherduck:
+    connection:
+      type: motherduck
+      database: ${{ MOTHERDUCK_DATABASE }}
+      token: ${{ MOTHERDUCK_TOKEN }}
+    state_connection:
+      type: duckdb
+      database: motherduck_state.db
+
   snowflake:
     connection:
       type: snowflake
@@ -9,16 +18,14 @@ gateways:
       database: ${{ SNOWFLAKE_DATABASE }}
       warehouse: ${{ SNOWFLAKE_WAREHOUSE }}
       role: ${{ SNOWFLAKE_ROLE }}
-
-
     state_connection:
       type: duckdb
       database: snowflake_state.db
 
-default_gateway: snowflake
+default_gateway: motherduck
 
 model_defaults:
-  dialect: snowflake
+  dialect: duckdb
   start: 2024-11-16
 
 

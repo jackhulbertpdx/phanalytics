@@ -5,7 +5,7 @@ MODEL (
     grain  venueid
   );
 
-with 
+with
 
 source as (
 
@@ -16,9 +16,7 @@ source as (
 renamed as (
 
     select
-        _airbyte_raw_id,
-        _airbyte_extracted_at,
-        _airbyte_meta,
+        _extracted_at,
         city,
         alias,
         state,

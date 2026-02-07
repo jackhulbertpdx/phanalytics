@@ -2,11 +2,11 @@ MODEL (
     name DEV_T1_STAGING.stg__song_metadata,
     kind FULL,
     cron '@monthly',
-    grain  _airbyte_raw_id
+    grain  songid
   );
 
 
-with 
+with
 
 source as (
 
@@ -17,9 +17,7 @@ source as (
 renamed as (
 
     select
-        _airbyte_raw_id,
-        _airbyte_extracted_at,
-        _airbyte_meta,
+        _extracted_at,
         slug,
         song,
         lyrics,

@@ -2,13 +2,13 @@ MODEL (
     name DEV_T1_STAGING.stg__jamcharts,
     kind FULL,
     cron '@monthly',
-    grain  _airbyte_raw_id,
+    grain  uniqueid
 
   );
 
 
 
-with 
+with
 
 source as (
 
@@ -19,7 +19,6 @@ source as (
 renamed as (
 
     select
-        _airbyte_raw_id,
         gap,
         set,  -- renamed to avoid keyword
         city,
@@ -55,8 +54,8 @@ renamed as (
         artist_slug,
         is_original,
         setlistnotes,
-        jamchart_description,        
-        _airbyte_extracted_at
+        jamchart_description,
+        _extracted_at
     from source
 
 )

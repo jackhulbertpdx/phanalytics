@@ -1,0 +1,56 @@
+name: Daily Phish Data ETL Pipeline
+
+on:
+  schedule:
+    # Run daily at 6 AM UTC (1 AM EST / 10 PM PST)
+    - cron: '0 6 * * *'
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  extract-and-transform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Extract data from Phish.net API
+        env:
+          PHISH_NET_API_KEY: ${{ secrets.PHISH_NET_API_KEY }}
+          MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+          MOTHERDUCK_DATABASE: ${{ vars.MOTHERDUCK_DATABASE || 'phanalytics_dev' }}
+          MOTHERDUCK_SCHEMA: ${{ vars.MOTHERDUCK_SCHEMA || 'dev_t0_raw' }}
+          LOG_LEVEL: INFO
+        run: |
+          cd extract
+          python extract_phish.py
+
+      - name: Install SQLMesh
+        run: |
+          pip install sqlmesh
+
+      - name: Run SQLMesh transformations
+        env:
+          MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
+          MOTHERDUCK_DATABASE: ${{ vars.MOTHERDUCK_DATABASE || 'phanalytics_dev' }}
+        run: |
+          cd sqlmesh
+          sqlmesh plan --auto-apply
+
+      - name: Notify on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.setFailed('Daily ETL pipeline failed. Check the logs for details.')
