@@ -3,8 +3,8 @@ gateways:
   motherduck:
     connection:
       type: motherduck
-      database: ${{ MOTHERDUCK_DATABASE }}
-      token: ${{ MOTHERDUCK_TOKEN }}
+      database: {{ env_var('MOTHERDUCK_DATABASE', 'phanalytics_dev') }}
+      token: {{ env_var('MOTHERDUCK_TOKEN') }}
     state_connection:
       type: duckdb
       database: motherduck_state.db
