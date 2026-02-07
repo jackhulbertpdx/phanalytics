@@ -1,13 +1,6 @@
-# This file was automatically generated
+# Connection to MotherDuck for Phish data
 name: phish_dev
-type: snowflake
+type: duckdb
 options:
-  account: ${EVIDENCE_SF_ACCOUNT}
-  database: ${SNOWFLAKE_DATABASE}
-  warehouse: ${SNOWFLAKE_WAREHOUSE}
-  role: ${SNOWFLAKE_ROLE}
-  username: ${SNOWFLAKE_USERNAME}
-  password: ${SNOWFLAKE_PASSWORD}
-  schema: ${EVIDENCE_SF_SCHEMA}
-  authenticator: userpass
-  resultPrefetch: 2
+  filename: md:${MOTHERDUCK_DATABASE}?motherduck_token=${MOTHERDUCK_TOKEN}
+  schema: dev_t3_presentation
