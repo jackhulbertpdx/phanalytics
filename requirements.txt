@@ -3,7 +3,7 @@ requests==2.31.0
 urllib3==2.1.0
 
 # Database
-duckdb==0.10.0
+duckdb>=1.4.4
 pandas>=2.0.0
 
 # Utilities
