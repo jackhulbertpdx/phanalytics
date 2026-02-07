@@ -9,19 +9,6 @@ gateways:
       type: duckdb
       database: motherduck_state.db
 
-  snowflake:
-    connection:
-      type: snowflake
-      account: ${{ SNOWFLAKE_ACCOUNT }}
-      user: ${{ SNOWFLAKE_USERNAME }}
-      password: ${{ SNOWFLAKE_PASSWORD }}
-      database: ${{ SNOWFLAKE_DATABASE }}
-      warehouse: ${{ SNOWFLAKE_WAREHOUSE }}
-      role: ${{ SNOWFLAKE_ROLE }}
-    state_connection:
-      type: duckdb
-      database: snowflake_state.db
-
 default_gateway: motherduck
 
 model_defaults:

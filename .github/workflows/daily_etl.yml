@@ -38,7 +38,7 @@ jobs:
 
       - name: Install SQLMesh
         run: |
-          pip install sqlmesh
+          pip install "sqlmesh[motherduck]"
 
       - name: Run SQLMesh transformations
         env:
