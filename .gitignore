@@ -199,3 +199,4 @@ rust/cubesql/profile.json
 ##.env
 ##.evidence/meta
 .env
+sqlmesh/motherduck_state.db
